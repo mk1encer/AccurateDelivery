@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useState } from "react";
-import * as firebase from "firebase";
-import { signIn } from "./lib/auth";
 
 export default function App() {
   const [email, setEmail] = useState("");
@@ -40,6 +38,7 @@ export default function App() {
         placeholder="Password"
         value={password}
         autoCapitalize="none"
+        secureTextEntry={true}
         onChangeText={(pw) => setPassword(pw)}
       />
       <Button title="Sign in" style={styles.button} />
