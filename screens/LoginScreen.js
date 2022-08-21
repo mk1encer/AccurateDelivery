@@ -7,8 +7,6 @@ import { StyleSheet, Text, View, Button as RNButton } from "react-native";
 import { Button, InputField, ErrorMessage } from "../components";
 import Firebase from "../config/firebase";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
@@ -40,8 +38,6 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
-      <StatusBar style='dark-content' />
       <StatusBar style="dark-content" />
       <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
       <Text style={styles.title}>Accurate Delivery</Text>
@@ -84,8 +80,8 @@ export default function LoginScreen({ navigation }) {
       {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
       <Button
         onPress={onLogin}
-        backgroundColor='#7D2DF5'
         title='Login'
+        backgroundColor='#8b00ff'
         titleColor='#fff'
         titleSize={20}
         containerStyle={{
@@ -97,11 +93,6 @@ export default function LoginScreen({ navigation }) {
         backgroundColor='#fff'
         title='Go to Signup'
         titleColor='#000000'
-      />  
-      <RNButton
-        onPress={() => navigation.navigate("Signup")}
-        title="Go to Signup"
-        color="black"
       />
     </View>
   );

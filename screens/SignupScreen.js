@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
+import { MaterialCommunityIcons } from "@expo/vector-icons";import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
 
 import { Button, InputField, ErrorMessage } from '../components';
 import Firebase from '../config/firebase';
-
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const auth = Firebase.auth();
 
@@ -81,8 +79,8 @@ export default function SignupScreen({ navigation }) {
       {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
       <Button
         onPress={onHandleSignup}
-        backgroundColor='#7D2DF5'
         title='Signup'
+        backgroundColor='#8b00ff'
         titleColor='#fff'
         titleSize={20}
         containerStyle={{
