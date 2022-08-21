@@ -1,35 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button as RNButton } from "react-native";
 
-import { Button, InputField, ErrorMessage } from '../components';
-import Firebase from '../config/firebase';
+import { Button, InputField, ErrorMessage } from "../components";
+import Firebase from "../config/firebase";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [rightIcon, setRightIcon] = useState('eye');
-  const [loginError, setLoginError] = useState('');
+  const [rightIcon, setRightIcon] = useState("eye");
+  const [loginError, setLoginError] = useState("");
 
   const handlePasswordVisibility = () => {
-    if (rightIcon === 'eye') {
-      setRightIcon('eye-off');
+    if (rightIcon === "eye") {
+      setRightIcon("eye-off");
       setPasswordVisibility(!passwordVisibility);
-    } else if (rightIcon === 'eye-off') {
-      setRightIcon('eye');
+    } else if (rightIcon === "eye-off") {
+      setRightIcon("eye");
       setPasswordVisibility(!passwordVisibility);
     }
   };
 
   const onLogin = async () => {
     try {
-      if (email !== '' && password !== '') {
+      if (email !== "" && password !== "") {
         await auth.signInWithEmailAndPassword(email, password);
       }
     } catch (error) {
@@ -41,41 +42,43 @@ export default function LoginScreen({ navigation }) {
     <View style={styles.container}>
       <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
       <StatusBar style='dark-content' />
+      <StatusBar style="dark-content" />
+      <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
       <Text style={styles.title}>Accurate Delivery</Text>
       <InputField
         inputStyle={{
-          fontSize: 14
+          fontSize: 14,
         }}
         containerStyle={{
-          backgroundColor: '#fff',
-          marginBottom: 20
+          backgroundColor: "#fff",
+          marginBottom: 20,
         }}
-        leftIcon='email'
-        placeholder='Enter email'
-        autoCapitalize='none'
-        keyboardType='email-address'
-        textContentType='emailAddress'
+        leftIcon="email"
+        placeholder="Enter email"
+        autoCapitalize="none"
+        keyboardType="email-address"
+        textContentType="emailAddress"
         autoFocus={true}
         value={email}
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
       <InputField
         inputStyle={{
-          fontSize: 14
+          fontSize: 14,
         }}
         containerStyle={{
-          backgroundColor: '#fff',
-          marginBottom: 20
+          backgroundColor: "#fff",
+          marginBottom: 20,
         }}
-        leftIcon='lock'
-        placeholder='Enter password'
-        autoCapitalize='none'
+        leftIcon="lock"
+        placeholder="Enter password"
+        autoCapitalize="none"
         autoCorrect={false}
         secureTextEntry={passwordVisibility}
-        textContentType='password'
+        textContentType="password"
         rightIcon={rightIcon}
         value={password}
-        onChangeText={text => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
         handlePasswordVisibility={handlePasswordVisibility}
       />
       {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
@@ -86,7 +89,7 @@ export default function LoginScreen({ navigation }) {
         titleColor='#fff'
         titleSize={20}
         containerStyle={{
-          marginBottom: 24
+          marginBottom: 24,
         }}
       />
       <Button
@@ -94,6 +97,11 @@ export default function LoginScreen({ navigation }) {
         backgroundColor='#fff'
         title='Go to Signup'
         titleColor='#000000'
+      />  
+      <RNButton
+        onPress={() => navigation.navigate("Signup")}
+        title="Go to Signup"
+        color="black"
       />
     </View>
   );
