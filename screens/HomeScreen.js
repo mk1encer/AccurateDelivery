@@ -25,7 +25,7 @@ export default function HomeScreen() {
         <IconButton
           name='logout'
           size={24}
-          color='#fff'
+          color='#000000'
           onPress={handleSignOut}
         />
       </View>
@@ -37,7 +37,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e93b81',
+    backgroundColor: '#FFF0F5',
     paddingTop: 50,
     paddingHorizontal: 12
   },
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#fff'
+    color: '#000000'
   },
   text: {
     fontSize: 16,
     fontWeight: 'normal',
-    color: '#fff'
+    color: '#000000'
   }
 });

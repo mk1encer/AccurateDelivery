@@ -6,6 +6,8 @@ import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
 import { Button, InputField, ErrorMessage } from '../components';
 import Firebase from '../config/firebase';
 
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
@@ -37,8 +39,9 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
       <StatusBar style='dark-content' />
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Accurate Delivery</Text>
       <InputField
         inputStyle={{
           fontSize: 14
@@ -78,18 +81,19 @@ export default function LoginScreen({ navigation }) {
       {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
       <Button
         onPress={onLogin}
-        backgroundColor='#f57c00'
+        backgroundColor='#7D2DF5'
         title='Login'
-        tileColor='#fff'
+        titleColor='#fff'
         titleSize={20}
         containerStyle={{
           marginBottom: 24
         }}
       />
-      <RNButton
+      <Button
         onPress={() => navigation.navigate('Signup')}
+        backgroundColor='#fff'
         title='Go to Signup'
-        color='#fff'
+        titleColor='#000000'
       />
     </View>
   );
@@ -98,14 +102,15 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e93b81',
+    backgroundColor: '#FFF0F5',
     paddingTop: 50,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    alignItems: "center",
   },
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#fff',
+    color: '#000000',
     alignSelf: 'center',
     paddingBottom: 24
   }
