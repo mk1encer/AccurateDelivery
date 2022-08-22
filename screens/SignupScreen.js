@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useState } from "react";
@@ -38,12 +39,13 @@ export default function SignupScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="dark-content" />
+      <MaterialCommunityIcons name="truck-delivery" size={80} color="black" />
       <Text style={styles.title}>Create new account</Text>
       <InputField
         inputStyle={{
           fontSize: 14,
         }}
-        containerStyle={{
+        containerStyle={{s
           backgroundColor: "#fff",
           marginBottom: 20,
         }}
@@ -78,7 +80,7 @@ export default function SignupScreen({ navigation }) {
       {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
       <Button
         onPress={onHandleSignup}
-        backgroundColor="#f57c00"
+        backgroundColor="#8b00ff"
         title="Signup"
         tileColor="#fff"
         titleSize={20}
@@ -86,10 +88,11 @@ export default function SignupScreen({ navigation }) {
           marginBottom: 24,
         }}
       />
-      <RNButton
+      <Button
         onPress={() => navigation.navigate("Login")}
         title="Go to Login"
-        color="#fff"
+        backgroundColor='#fff'
+        titleColor='#000000'
       />
     </View>
   );
@@ -98,15 +101,17 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e93b81",
+    backgroundColor: '#FFF0F5',
     paddingTop: 50,
     paddingHorizontal: 12,
+    alignItems: "center",
   },
   title: {
     fontSize: 24,
-    fontWeight: "600",
-    color: "#000000",
-    alignSelf: "center",
-    paddingBottom: 24,
-  },
+    fontWeight: '600',
+    color: '#000000',
+    alignSelf: 'center',
+    paddingBottom: 24
+  }
 });
+
