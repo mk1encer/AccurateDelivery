@@ -3,7 +3,7 @@ import { StyleSheet, Pressable, Text } from 'react-native';
 
 const Button = ({
   title,
-  backgroundColor = '#000',
+  backgroundColor = '#8b00ff',
   titleColor = '#fff',
   titleSize = 14,
   onPress,
