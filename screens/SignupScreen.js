@@ -45,7 +45,7 @@ export default function SignupScreen({ navigation }) {
         inputStyle={{
           fontSize: 14,
         }}
-        containerStyle={{s
+        containerStyle={{
           backgroundColor: "#fff",
           marginBottom: 20,
         }}

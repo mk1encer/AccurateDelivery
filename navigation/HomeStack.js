@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export default function HomeStack() {
   return (
-    <Stack.Navigator options={{ headerShown: false }} headerMode="none">
+    <Stack.Navigator options={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Camera" component={CameraScreen} />
     </Stack.Navigator>
