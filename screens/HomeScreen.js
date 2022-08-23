@@ -1,19 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useContext, useState } from "react";
-import { SafeAreaView, StyleSheet, TextInput, View, Text, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 
 import { IconButton } from "../components";
 import TodoInsert from '../components/TodoInsert';
 import TodoList from '../components/TodoList';
 
 import Firebase from "../config/firebase";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const auth = Firebase.auth();
 
 export default function HomeScreen({ navigation }) {
-  const { user } = useContext(AuthenticatedUserContext);
   const handleSignOut = async () => {
     try {
       await auth.signOut();
