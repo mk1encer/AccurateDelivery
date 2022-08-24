@@ -4,6 +4,31 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const TodoListItem = ({ textValue, id, checked, onRemove, onToggle }) => {
+  const onLocate = () => {
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    useEffect(() => {
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          setErrorMsg("Permission to access location was denied");
+          return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      })();
+    }, []);
+
+    let text = "Waiting..";
+    if (errorMsg) {
+      text = errorMsg;
+    } else if (location) {
+      text = JSON.stringify(location);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPressOut={onToggle(id)}>
@@ -25,11 +50,16 @@ const TodoListItem = ({ textValue, id, checked, onRemove, onToggle }) => {
           </View>
         )}
       </TouchableOpacity>
-      <Text
-        style={[styles.text, checked ? styles.strikeText : styles.unstrikeText]}
-      >
-        {`${id} ${textValue} `}
-      </Text>
+      <TouchableOpacity onPress={onLocate}>
+        <Text
+          style={[
+            styles.text,
+            checked ? styles.strikeText : styles.unstrikeText,
+          ]}
+        >
+          {`${id} ${textValue} `}
+        </Text>
+      </TouchableOpacity>
       <View style={styles.buttons}>
         <TouchableOpacity style={styles.buttonContainer}>
           <Text style={styles.buttonText} onPress={onRemove(id)}>

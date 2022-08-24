@@ -9,6 +9,8 @@ import TodoList from "../components/TodoList";
 import Firebase from "../config/firebase";
 import axios from "axios";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider";
+import * as Location from "expo-location";
+import S3 from "../components/S3";
 
 const auth = Firebase.auth();
 
@@ -21,6 +23,7 @@ export default function HomeScreen({ navigation }) {
       console.log(error);
     }
   };
+
   // todos: {id: Number, textValue: string, checked: boolean }
   const [todos, setTodos] = useState([]);
   const addTodo = ({ order_id, items, address, request_info }) => {
@@ -67,9 +70,11 @@ export default function HomeScreen({ navigation }) {
     },
   ]);
   const loadAddress = () => {
-    const response = axios
-      .get(`http://localhost:8080/api/order/user/${user.email.split("@")[0]}`)
-      .then(setDeliveryList(response.data));
+    const response = axios.get(
+      `http://localhost:8080/api/order/user/${user.email.split("@")[0]}`
+    );
+
+    setDeliveryList(response.data);
     //order_id,items,address,request_info
 
     deliveryList.map((list) => {
