@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import * as MediaLibrary from "expo-media-library";
+import axios from "axios";
 
 export default function CameraScreen() {
   const camera = useRef();
@@ -58,9 +59,11 @@ export default function CameraScreen() {
         exif: true,
       });
       await MediaLibrary.saveToLibraryAsync(uri);
-      alert(uri);
 
       setTakenPhoto(uri);
+      axios.post("/api/check/room-numberapi", {
+        imgaeURI: takePhoto,
+      });
     }
   };
 
